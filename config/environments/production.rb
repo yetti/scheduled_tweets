@@ -118,5 +118,8 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  config.time_zone = 'Canberra'
+  config.active_record.default_timezone = :local
+
   config.active_job.queue_adapter = :sidekiq
 end
