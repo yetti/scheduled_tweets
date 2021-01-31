@@ -5,7 +5,7 @@ class TweetJob < ApplicationJob
     return if tweet.published?
 
     # Rescheduled Tweet to the future
-    return if tweet.publish_at > Time.current
+    return if tweet.publish_at > Time.now.localtime
 
     tweet.publish_to_twitter!
   end
