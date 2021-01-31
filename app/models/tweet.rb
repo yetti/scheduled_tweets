@@ -5,10 +5,6 @@ class Tweet < ApplicationRecord
   validates :body, length: { minimum: 1, maximum: 280 }
   validates :publish_at, presence: true
 
-  after_initialize do
-    self.publish_at = Time.now.localtime
-  end
-
   after_save_commit do
     if publish_at_previously_changed?
       TweetJob.set(wait_until: publish_at).perform_later(self)
